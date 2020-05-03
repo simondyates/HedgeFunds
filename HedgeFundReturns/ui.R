@@ -8,7 +8,8 @@ shinyUI(fluidPage(
     # Sidebar with a slider input for number of bins
     sidebarLayout(
         sidebarPanel(
-            selectInput('data_type', 'Display', d_types, selected = 1)
+            selectInput('data_type', 'Display', d_types, selected = 1),
+            selectInput('freq_type', 'Return Frequency', f_types, selected = 1)
         ),
         # Show a plot of the generated distribution
         mainPanel(
@@ -23,7 +24,22 @@ shinyUI(fluidPage(
                                 timeFormat = '%b %Y'),
                 )
             ),
-            plotOutput('linePlot')
+            tabsetPanel(
+                tabPanel('Index',
+                    plotOutput('linePlot'), 
+                    plotOutput('barPlot')
+                ),
+                tabPanel('Strategies',
+                    selectInput('strat_type', 'Strategy', st_types, selected = 1), 
+                    plotOutput('strlinePlot'), 
+                    plotOutput('strbarPlot')
+                ),
+                tabPanel('Sizes',
+                    selectInput('size_type', 'Size', sz_types, selected = 1), 
+                    plotOutput('sizlinePlot'), 
+                    plotOutput('sizbarPlot')
+                )
+            )
         )
     )
 ))

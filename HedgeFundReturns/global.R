@@ -4,10 +4,16 @@ library(dplyr)
 library(tidyverse)
 
 returns = read.csv('../EurekaHFIndices.csv')
-returns = select(returns, -X50)
+returns = select(returns, -Top.50)
 returns$Dates = as.Date(returns$Dates)
 
 d_types = c('Index', 'Not Implemented')
+f_types = c('3 month', '6 month', 'Annual')
+l = dim(returns)[2]
+sz_types = c('Small', 'Medium', 'Large', 'Billion Dollar')
+c_names = gsub('\\.', ' ', names(returns)[c(-1, -2)])
+st_types = c_names[! c_names %in% sz_types]
+st_types = st_types[1:(length(st_types)-2)]
 
 to_returns = function(col_in) {
   print(length(returns[col_in]))
