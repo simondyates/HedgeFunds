@@ -7,9 +7,10 @@ returns = read.csv('../EurekaHFIndices.csv')
 returns = select(returns, -Top.50)
 returns$Dates = as.Date(returns$Dates)
 
-d_types = c('Index', 'Not Implemented')
+d_types = c('Returns', 'Standard Deviations', 'Sharpe Ratios')
 f_types = c('3 month', '6 month', 'Annual')
-l = dim(returns)[2]
+N = nrow(returns)
+l = ncol(returns)
 sz_types = c('Small', 'Medium', 'Large', 'Billion Dollar')
 c_names = gsub('\\.', ' ', names(returns)[c(-1, -2)])
 st_types = c_names[! c_names %in% sz_types]
