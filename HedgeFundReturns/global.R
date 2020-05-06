@@ -15,8 +15,3 @@ sz_types = c('Small', 'Medium', 'Large', 'Billion Dollar')
 c_names = gsub('\\.', ' ', names(returns)[c(-1, -2)])
 st_types = c_names[! c_names %in% sz_types]
 st_types = st_types[1:(length(st_types)-2)]
-
-to_returns = function(col_in) {
-  print(length(returns[col_in]))
-  returns[col_in][-1] / returns[col_in][1:(length(returns[col_in])-1)] -1
-}
