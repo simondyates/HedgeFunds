@@ -4,10 +4,10 @@ library(dplyr)
 library(tidyverse)
 library(scales)
 
-returns = read.csv('../EurekaHFIndices.csv')
+returns = read.csv('./EurekaHFIndices.csv')
 returns = select(returns, -Top.50)
 returns$Dates = as.Date(returns$Dates)
-defs = read.csv('../EurekaStratDefs.csv')
+defs = read.csv('./EurekaStratDefs.csv')
 
 d_types = c('Returns', 'Standard Deviations', 'Sharpe Ratios')
 f_types = c('3 month', '6 month', 'Annual')
