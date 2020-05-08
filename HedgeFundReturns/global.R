@@ -2,6 +2,7 @@ library(shiny)
 library(shinydashboard)
 library(dplyr)
 library(tidyverse)
+library(scales)
 
 returns = read.csv('../EurekaHFIndices.csv')
 returns = select(returns, -Top.50)
